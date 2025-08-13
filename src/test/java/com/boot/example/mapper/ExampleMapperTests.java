@@ -19,10 +19,10 @@ public class ExampleMapperTests {
         log.info(exampleMapper.getDate());
     }
 
-//    @Test
-//    public void testGetTime() {
-//        log.info(exampleMapper.getClass().getName());
-//        log.info("getTime() 메서드 실행");
-//        log.info(exampleMapper.getTime());
-//    }
+    @Test
+    public void testGetTime() {
+        log.info(exampleMapper.getClass().getName());
+        log.info("getTime() 메서드 실행");
+        log.info(exampleMapper.getTime());
+    }
 }
