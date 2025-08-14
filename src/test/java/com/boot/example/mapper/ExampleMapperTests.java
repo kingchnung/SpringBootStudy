@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-@Slf4j
+@Slf4j //console 관련 lombok 어노테이션
 public class ExampleMapperTests {
 
     @Autowired
