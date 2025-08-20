@@ -28,4 +28,21 @@ public class BookMapperTests {
         int result = bookMapper.bookInsert(book);
         log.info("적용된 행의 수 : {}", result);
     }
+
+    @Test
+    public void testBookDelete() {
+        Book book = Book.builder().bookId(24).build();
+        int result = bookMapper.bookDelete(book);
+        log.info("삭제된 행의 수 : {}", result);
+
+    }
+
+    @Test
+    public void testBookUpdate() {
+        Book book = Book.builder().title("왕찬웅 수정").author("왕찬웅")
+                .publisher("왕가네식구들").publishDate("25-08-18")
+                .price(157654821).build();
+        int result = bookMapper.bookUpdate(book);
+        log.info("수정된 행의 수 : {}", result);
+    }
 }

@@ -20,4 +20,13 @@
         INSERT INTO book (title, author, publisher, publish_date, price)
         VALUES (#{title}, #{author}, #{publisher}, #{publishDate}, #{price})
     </insert>
+    <delete id="bookDelete" parameterType="com.boot.example.domain.Book">
+        DELETE FROM book WHERE book_id = #{bookId}
+    </delete>
+    <update id="bookUpdate" parameterType="com.boot.example.domain.Book">
+        UPDATE book SET title=#{title}, author=#{author},
+        publisher=#{publisher}, publish_date=#{publishDate},
+        price=#{price}
+        WHERE book_id = #{bookId}
+    </update>
 </mapper>

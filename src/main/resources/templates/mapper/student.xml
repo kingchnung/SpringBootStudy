@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boot.example.mapper.StudentMapper">
+    <resultMap id="studentResult" type="com.boot.example.domain.Student">
+        <id column="SD_NUM" property="studentNumber" />
+        <result column="SD_NAME" property="studentName" />
+        <result column="SD_ID" property="studentId" />
+        <result column="SD_PASSWD" property="studentPassword" />
+        <result column="S_NUM" property="subjectNumber" />
+        <result column="SD_BIRTH" property="studentBirth" />
+        <result column="SD_PHONE" property="studentPhone" />
+        <result column="SD_ADDRESS" property="studentAddress" />
+        <result column="SD_EMAIL" property="studentEmail" />
+        <result column="SD_DATE" property="date" />
+    </resultMap>
+
+    <select id="studentList" resultMap="studentResult">
+        SELECT
+        SD_NUM, SD_NAME, SD_ID, S_NUM, SD_BIRTH, SD_ADDRESS, SD_EMAIL, SD_DATE
+        FROM student
+        ORDER BY sd_num
+    </select>
+<!--    <insert id="bookInsert" parameterType="com.boot.example.domain.Book">-->
+<!--        INSERT INTO book (title, author, publisher, publish_date, price)-->
+<!--        VALUES (#{title}, #{author}, #{publisher}, #{publishDate}, #{price})-->
+<!--    </insert>-->
+<!--    <delete id="bookDelete" parameterType="com.boot.example.domain.Book">-->
+<!--        DELETE FROM book WHERE book_id = #{bookId}-->
+<!--    </delete>-->
+<!--    <update id="bookUpdate" parameterType="com.boot.example.domain.Book">-->
+<!--        UPDATE book SET title=#{title}, author=#{author},-->
+<!--        publisher=#{publisher}, publish_date=#{publishDate},-->
+<!--        price=#{price}-->
+<!--        WHERE book_id = #{bookId}-->
+<!--    </update>-->
+</mapper>
