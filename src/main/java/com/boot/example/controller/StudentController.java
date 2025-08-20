@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -22,5 +24,11 @@ public class StudentController {
         model.addAttribute("studentList", studentList);
         model.addAttribute("student", student);
         return "/student/studentList";
+    }
+
+    @PostMapping("/studentInsert")
+    public String studentInsert(@ModelAttribute Student student) {
+        studentService.studentInsert(student);
+        return "redirect:/student/studentList";
     }
 }

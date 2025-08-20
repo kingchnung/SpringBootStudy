@@ -8,4 +8,5 @@ import java.util.List;
 @Mapper
 public interface StudentMapper {
     public List<Student> studentList();
+    public int studentInsert(Student student);
 }
