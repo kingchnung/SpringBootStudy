@@ -8,5 +8,6 @@ import java.util.List;
 @Mapper
 public interface StudentMapper {
     public List<Student> studentList();
+    public String studentAutoNumber(Student student);
     public int studentInsert(Student student);
 }
