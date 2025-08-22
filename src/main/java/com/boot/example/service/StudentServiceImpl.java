@@ -15,7 +15,8 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public List<Student> studentList() {
-        return studentMapper.studentList();
+        List<Student> studentList = studentMapper.studentList();
+        return studentList;
     }
 
     @Override

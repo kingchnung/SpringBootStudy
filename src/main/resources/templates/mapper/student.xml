@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.boot.example.mapper.StudentMapper">
-    <resultMap id="studentResult" type="com.boot.example.domain.Student">
-        <id column="SD_NUM" property="studentNumber" />
-        <result column="SD_NAME" property="studentName" />
-        <result column="SD_ID" property="studentId" />
-        <result column="SD_BIRTH" property="studentBirth" />
-        <result column="SD_PHONE" property="studentPhone" />
-        <result column="SD_ADDRESS" property="studentAddress" />
-        <result column="SD_EMAIL" property="studentEmail" />
-        <result column="SD_DATE" property="date" />
-    </resultMap>
+<!--    <resultMap id="studentResult" type="com.boot.example.domain.Student">-->
+<!--        <id column="SD_NUM" property="studentNumber" />-->
+<!--        <result column="SD_NAME" property="studentName" />-->
+<!--        <result column="SD_ID" property="studentId" />-->
+<!--        <result column="SD_BIRTH" property="studentBirth" />-->
+<!--        <result column="SD_PHONE" property="studentPhone" />-->
+<!--        <result column="SD_ADDRESS" property="studentAddress" />-->
+<!--        <result column="SD_EMAIL" property="studentEmail" />-->
+<!--        <result column="SD_DATE" property="date" />-->
+<!--    </resultMap>-->
 
-    <select id="studentList" resultMap="studentResult">
-        SELECT
-        SD_NUM, SD_NAME, SD_ID, S_NUM, SD_BIRTH, SD_PHONE, SD_ADDRESS, SD_EMAIL, SD_DATE
-        FROM student
-        ORDER BY sd_num
-    </select>
-    <insert id="studentInsert" parameterType="com.boot.example.domain.Student">
-        INSERT INTO student (sd_num, s_num, sd_name, sd_id, sd_passwd, sd_birth, sd_phone, sd_address, sd_email, date)
-        VALUES (#{studentNumber}, #{subjectNumber}, #{studentName}, #{studentId}, #{studentPassword},
-        #{studentBirth}, #{studentPhone}, #{studentAddress}, #{studentEmail}, #{date})
-    </insert>
+<!--    <select id="studentList" resultMap="studentResult">-->
+<!--        SELECT-->
+<!--        SD_NUM, SD_NAME, SD_ID, S_NUM, SD_BIRTH, SD_PHONE, SD_ADDRESS, SD_EMAIL, SD_DATE-->
+<!--        FROM student-->
+<!--        ORDER BY sd_num-->
+<!--    </select>-->
+<!--    <insert id="studentInsert" parameterType="com.boot.example.domain.Student">-->
+<!--        INSERT INTO student (sd_num, s_num, sd_name, sd_id, sd_passwd, sd_birth, sd_phone, sd_address, sd_email, date)-->
+<!--        VALUES (#{studentNumber}, #{subjectNumber}, #{studentName}, #{studentId}, #{studentPassword},-->
+<!--        #{studentBirth}, #{studentPhone}, #{studentAddress}, #{studentEmail}, #{date})-->
+<!--    </insert>-->
 <!--    <delete id="bookDelete" parameterType="com.boot.example.domain.Book">-->
 <!--        DELETE FROM book WHERE book_id = #{bookId}-->
 <!--    </delete>-->

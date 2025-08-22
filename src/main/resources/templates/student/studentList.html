@@ -15,14 +15,16 @@
         <table class="table table-hover">
             <thead>
             <tr>
+                <th scope="col">번호</th>
                 <th scope="col">학번</th>
+                <th scope="col">학과명</th>
                 <th scope="col">이름</th>
                 <th scope="col">아이디</th>
                 <th scope="col">생년월일</th>
                 <th scope="col">전화번호</th>
                 <th scope="col">주소</th>
                 <th scope="col">이메일</th>
-                <th scope="col">입학일</th>
+                <th scope="col">등록일</th>
                 <th scope="col">수정여부</th>
                 <th scope="col">삭제여부</th>
             </tr>
@@ -30,19 +32,21 @@
             <tbody class="table-group-divider">
             <th:block th:if="${#strings.isEmpty(studentList)}">
                 <tr>
-                    <td colspan="10">등록된 학생이 존재하지 않습니다</td>
+                    <td colspan="12">등록된 학생이 존재하지 않습니다</td>
                 </tr>
             </th:block>
             <th:block th:if="${not #strings.isEmpty(studentList)}">
                 <tr class="text-left" th:each="student : ${studentList}" th:object="${student}">
-                    <th scope="row" th:text="*{studentNumber}"></th>
+                    <th scope="row" th:text="*{no}"></th>
+                    <td th:text="*{studentNumber}"></td>
+                    <td th:text="*{subject.subjectName}"></td>
                     <td th:text="*{studentName}"></td>
                     <td th:text="*{studentId}"></td>
                     <td th:text="*{studentBirth}"></td>
                     <td th:text="*{studentPhone}"></td>
                     <td th:text="*{studentAddress}"></td>
                     <td th:text="*{studentEmail}"></td>
-                    <td th:text="*{date}"></td>
+                    <td th:text="*{#dates.format(date, 'yyyy-MM-dd')}"></td>
                     <td><a href="#" class="updateFormBtn link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">수정</a></td>
                     <td><a href="#" class="deleteBtn link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">삭제</a></td>
                 </tr>
@@ -54,76 +58,77 @@
     <div class="row">
         <div class="text-center"><h5>학생정보 등록</h5></div>
 
-        <form id="insertForm" th:object="${student}">
-            <input type="hidden" th:field="*{studentNumber}">
-            <div class="mb-3 row">
-                <label for="studentNumber" class="col-sm-3 col-form-label">학번</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" th:field="*{studentNumber}">
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="subjectNumber" class="col-sm-3 col-form-label">학과번호</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" th:field="*{subjectNumber}">
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="studentName" class="col-sm-3 col-form-label">이름</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" th:field="*{studentName}">
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="studentId" class="col-sm-3 col-form-label">아이디</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" th:field="*{studentId}">
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="studentPassword" class="col-sm-3 col-form-label">비밀번호</label>
-                <div class="col-sm-9">
-                    <input type="password" class="form-control" th:field="*{studentPassword}">
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="studentBirth" class="col-sm-3 col-form-label">생년월일</label>
-                <div class="col-sm-9">
-                    <input type="date" class="form-control" th:field="*{studentBirth}">
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="studentPhone" class="col-sm-3 col-form-label">전화번호</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" th:field="*{studentPhone}">
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="studentAddress" class="col-sm-3 col-form-label">주소</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" th:field="*{studentAddress}">
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="studentEmail" class="col-sm-3 col-form-label">이메일</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" th:field="*{studentEmail}">
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="date" class="col-sm-3 col-form-label">입학일</label>
-                <div class="col-sm-9">
-                    <input type="date" class="form-control" th:field="*{date}">
-                </div>
-            </div>
-            <div class="text-end">
-                <button type="button" class="btn btn-primary btn-sm" id="insertBtn">학생정보등록</button>
-                <button type="button" class="btn btn-primary btn-sm" id="cancelBtn">다시입력</button>
-            </div>
-        </form>
+<!--        <form id="insertForm" th:object="${student}">-->
+<!--            <input type="hidden" th:field="*{studentNumber}">-->
+<!--            <div class="mb-3 row">-->
+<!--                <label for="studentNumber" class="col-sm-3 col-form-label">학번</label>-->
+<!--                <div class="col-sm-9">-->
+<!--                    <input type="text" class="form-control" th:field="*{studentNumber}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="mb-3 row">-->
+<!--                <label for="subjectNumber" class="col-sm-3 col-form-label">학과번호</label>-->
+<!--                <div class="col-sm-9">-->
+<!--                    <input type="text" class="form-control" th:field="*{subjectNumber}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="mb-3 row">-->
+<!--                <label for="studentName" class="col-sm-3 col-form-label">이름</label>-->
+<!--                <div class="col-sm-9">-->
+<!--                    <input type="text" class="form-control" th:field="*{studentName}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="mb-3 row">-->
+<!--                <label for="studentId" class="col-sm-3 col-form-label">아이디</label>-->
+<!--                <div class="col-sm-9">-->
+<!--                    <input type="text" class="form-control" th:field="*{studentId}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="mb-3 row">-->
+<!--                <label for="studentPassword" class="col-sm-3 col-form-label">비밀번호</label>-->
+<!--                <div class="col-sm-9">-->
+<!--                    <input type="password" class="form-control" th:field="*{studentPassword}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="mb-3 row">-->
+<!--                <label for="studentBirth" class="col-sm-3 col-form-label">생년월일</label>-->
+<!--                <div class="col-sm-9">-->
+<!--                    <input type="date" class="form-control" th:field="*{studentBirth}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="mb-3 row">-->
+<!--                <label for="studentPhone" class="col-sm-3 col-form-label">전화번호</label>-->
+<!--                <div class="col-sm-9">-->
+<!--                    <input type="text" class="form-control" th:field="*{studentPhone}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="mb-3 row">-->
+<!--                <label for="studentAddress" class="col-sm-3 col-form-label">주소</label>-->
+<!--                <div class="col-sm-9">-->
+<!--                    <input type="text" class="form-control" th:field="*{studentAddress}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="mb-3 row">-->
+<!--                <label for="studentEmail" class="col-sm-3 col-form-label">이메일</label>-->
+<!--                <div class="col-sm-9">-->
+<!--                    <input type="text" class="form-control" th:field="*{studentEmail}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="mb-3 row">-->
+<!--                <label for="date" class="col-sm-3 col-form-label">입학일</label>-->
+<!--                <div class="col-sm-9">-->
+<!--                    <input type="date" class="form-control" th:field="*{date}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="text-end">-->
+<!--                <button type="button" class="btn btn-primary btn-sm" id="insertBtn">학생정보등록</button>-->
+<!--                <button type="button" class="btn btn-primary btn-sm" id="cancelBtn">다시입력</button>-->
+<!--            </div>-->
+<!--        </form>-->
     </div>
 </div>
-
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="/js/common.js"></script>
 <script src="/js/student.js"></script>
 </body>
